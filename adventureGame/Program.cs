@@ -12,6 +12,7 @@ namespace adventureGame
             bool isRunning = true;
             
             
+            
             string playerChoice = "";
 
             Console.WriteLine("welcome to the adveture game");
@@ -51,19 +52,22 @@ namespace adventureGame
             while (isRunning == true)
             {
                 //Story and choices
-                Console.WriteLine("you begin your journey");
+                Console.WriteLine("you begin your adventure");
                 Console.WriteLine("you find yourself at a fork in the road. Do you go left or right?");
                 playerChoice = Console.ReadLine().ToLower();
 
                 if (playerChoice == "left")
                 {
-                    Console.WriteLine("you encounter a wizard who gives you a staff");
-                    Console.WriteLine("do you take it? (take/leave)");
+                    Console.WriteLine("You see a man infront of you. Are you worthy for this Staff?");
+                    Console.WriteLine("do you take the staff? (take/leave)");
 
                     playerChoice = Console.ReadLine().ToLower();
 
                     if (playerChoice == "take")
                     {
+                        Console.WriteLine("you need to fight me for it");
+
+
                         if (isMagicUser == true)
                         {
                             Console.WriteLine("you grab the staff and shoot a bolt at the tree. The wizard congratulates you!");
