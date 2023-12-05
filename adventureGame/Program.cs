@@ -87,21 +87,24 @@ namespace adventureGame
                             else
                             {
                                 Console.WriteLine("you grab the staff but nothing happens. The wizard takes it back as you are not worthy");
-                                
+                                GameOver();
                             }
                         }
                         else if (playerChoice == "leave")
                         {
                             Console.WriteLine("the wizard sighs as you walk away");
+                            GameOver();
                         }
                         else
                         {
                             Console.WriteLine("the wizard stares at you and walks away");
+                            GameOver();
                         }
                     }
                     else if (playerChoice == "right")
                     {
                         Console.WriteLine("You find a treasure chest at the side of the road");
+                        GameOver();
                     }
                     else
                     {
@@ -150,7 +153,22 @@ namespace adventureGame
                         {
                             foreach (string item in inventory)
                             {
-                                Console.WriteLine($"You have a: {item}");
+                                Console.WriteLine($"You have: {item}");
+                            }
+                            Console.WriteLine("Do you want to use a potion?");
+                            playerChoice = Console.ReadLine().ToLower();
+                            if (playerChoice == "yes")
+                            {
+                                if (HP >=80)
+                                {
+                                    HP = 100;
+                                    Console.WriteLine($"Your Helth is {HP}");
+                                }
+                                else
+                                {
+                                    HP = HP + 20;
+                                    Console.WriteLine($"Your Helth is {HP}");
+                                }
                             }
                         }
                         if (EnemyHP <= 0)
@@ -166,10 +184,7 @@ namespace adventureGame
                             GameOver();
                         }
                     }
-                }
-
-                
-                
+                }    
             }
             void GameOver()
             {
@@ -180,9 +195,11 @@ namespace adventureGame
                 {
                     Restart();
                 }
-                
-            }
-                
+                else
+                {
+                    isRunning = false;
+                }
+            }   
         }
     }
 }
