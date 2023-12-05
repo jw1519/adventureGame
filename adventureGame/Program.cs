@@ -19,6 +19,9 @@ namespace adventureGame
             int EnemyHP = 50;
             int HpPotions = 5;
 
+            List<String> Inventory;
+            Inventory = new List<string>();
+
             string playerChoice = "";
 
             Console.WriteLine("welcome to the adveture game");
