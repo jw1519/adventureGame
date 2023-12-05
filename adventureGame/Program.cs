@@ -13,13 +13,14 @@ namespace adventureGame
             bool isRunning = true;
             bool hasStaff = false;
             bool goShop = false;
-            bool inBattle = true;
+            bool inBattle = false;
             bool hasShield = true;
 
             int HP = 100;
             int Stamina = 5;
             int EnemyHP = 50;
             int HpPotions = 5;
+            int ShieldHP = 5;
             string[] inventory = { "Sword", "Shield", "Potion" };
 
             string playerChoice = "";
@@ -80,12 +81,13 @@ namespace adventureGame
                             {
                                 Console.WriteLine("you grab the staff and shoot a bolt at the tree. The wizard congratulates you!");
                                 Console.WriteLine("Time to test your power as enemys approach");
+                                hasStaff = true;
                                 inBattle = true;
                             }
                             else
                             {
                                 Console.WriteLine("you grab the staff but nothing happens. The wizard takes it back as you are not worthy");
-                                hasStaff = true;
+                                
                             }
                         }
                         else if (playerChoice == "leave")
@@ -104,6 +106,7 @@ namespace adventureGame
                     else
                     {
                         Console.WriteLine("you wander aimlessly and get lost. Game over!");
+                        GameOver();
                     }
 
                     if (goShop == true)
@@ -112,7 +115,7 @@ namespace adventureGame
                         Console.WriteLine("potions, weapons, shields");
                     }
 
-                    if (inBattle == true)
+                    while  (inBattle == true)
                     {
                         Console.WriteLine($"Your health is {HP}");
                         Console.WriteLine($"Your Stamina is {Stamina}");
@@ -124,22 +127,23 @@ namespace adventureGame
                         {
                             EnemyHP = EnemyHP - strength;
                             Console.WriteLine("Enemys Health is " + EnemyHP);
-                            Stamina--;
                         }
                         if (playerChoice == "Run")
                         {
                             Console.WriteLine("The Enemy runs after you loose stamina");
-                            Stamina = 1;
+                            Stamina-- ;
                         }
                         if (playerChoice == "Defend")
                         {
-                            if (hasShield == true)
+                            if (hasShield == true && ShieldHP >=1)
                             {
                                 Console.WriteLine("You raise up your shield ready for an attack. The enemy does no damage");
+                                ShieldHP--;
                             }
                             else
                             {
-                                Console.WriteLine("You dont have a shield. The enemy atacks. Your health is " + HP);
+                                Console.WriteLine("Your shield has broken. The enemy attacks. ");
+                                HP--;
                             }
                         }
                         if (playerChoice == "inventory")
@@ -149,9 +153,26 @@ namespace adventureGame
                                 Console.WriteLine($"You have a: {item}");
                             }
                         }
+                        if (EnemyHP <= 0)
+                        {
+                            Console.WriteLine("You won");
+                            inBattle = false;
+                        }
+                        if (HP <=0)
+                        {
+                            Console.WriteLine("GameOver");
+                            isRunning = false;
+                            inBattle = false;
+                            GameOver();
+                        }
                     }
                 }
 
+                
+                
+            }
+            void GameOver()
+            {
                 //Restart or quit the game
                 Console.WriteLine("Do you want to quit or restart (quit/restart)");
                 playerChoice = Console.ReadLine().ToLower();
@@ -159,11 +180,9 @@ namespace adventureGame
                 {
                     Restart();
                 }
-                else
-                {
-                    isRunning = false;
-                }
+                
             }
+                
         }
     }
 }
