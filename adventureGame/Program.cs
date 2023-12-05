@@ -52,7 +52,7 @@ namespace adventureGame
             while (isRunning == true)
             {
                 //Story and choices
-                Console.WriteLine("you begin your adventure");
+                Console.WriteLine("you begin your adventure"); //maybe use keys
                 Console.WriteLine("you find yourself at a fork in the road. Do you go left or right?");
                 playerChoice = Console.ReadLine().ToLower();
 
