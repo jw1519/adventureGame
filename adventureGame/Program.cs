@@ -21,6 +21,7 @@ namespace adventureGame
             int EnemyHP = 50;
             int HpPotions = 5;
             int ShieldHP = 5;
+            int Gold = 100;
             string[] inventory = { "Sword", "Shield", "Potion" };
 
             string playerChoice = "";
@@ -112,10 +113,33 @@ namespace adventureGame
                         GameOver();
                     }
 
-                    if (goShop == true)
+                    while (goShop == true)
                     {
+                        Console.WriteLine($"You have {Gold} Gold");
                         Console.WriteLine("Welcome to the shop what can I get for you?");
-                        Console.WriteLine("potions, weapons, shields");
+                        Console.WriteLine("potions, weapons, shields, leave");
+                        playerChoice = Console.ReadLine().ToLower();
+                        if(playerChoice == "potions")
+                        {
+                            if (Gold <25)
+                            {
+                                Console.WriteLine("Looks like your bit short on Gold");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Thats 25 Gold. (Take/Leave)");
+                                playerChoice = Console.ReadLine().ToLower();
+                                if (playerChoice == "take")
+                                {
+                                    Console.WriteLine("Pleasure doing buissness");
+                                    Gold = Gold - 25;
+                                }
+                            }
+                        }
+                        if (playerChoice == "leave")
+                        {
+                            goShop = false;
+                        }
                     }
 
                     while  (inBattle == true)
@@ -131,12 +155,12 @@ namespace adventureGame
                             EnemyHP = EnemyHP - strength;
                             Console.WriteLine("Enemys Health is " + EnemyHP);
                         }
-                        if (playerChoice == "Run")
+                        if (playerChoice == "run")
                         {
                             Console.WriteLine("The Enemy runs after you loose stamina");
                             Stamina-- ;
                         }
-                        if (playerChoice == "Defend")
+                        if (playerChoice == "defend")
                         {
                             if (hasShield == true && ShieldHP >=1)
                             {
@@ -146,7 +170,7 @@ namespace adventureGame
                             else
                             {
                                 Console.WriteLine("Your shield has broken. The enemy attacks. ");
-                                HP--;
+                                HP = HP - 10;
                             }
                         }
                         if (playerChoice == "inventory")
@@ -162,12 +186,10 @@ namespace adventureGame
                                 if (HP >=80)
                                 {
                                     HP = 100;
-                                    Console.WriteLine($"Your Helth is {HP}");
                                 }
                                 else
                                 {
                                     HP = HP + 20;
-                                    Console.WriteLine($"Your Helth is {HP}");
                                 }
                             }
                         }
@@ -175,12 +197,14 @@ namespace adventureGame
                         {
                             Console.WriteLine("You won");
                             inBattle = false;
+                            Gold = Gold + 10;
                         }
                         if (HP <=0)
                         {
                             Console.WriteLine("GameOver");
                             isRunning = false;
                             inBattle = false;
+                            Gold = Gold - 10;
                             GameOver();
                         }
                     }
