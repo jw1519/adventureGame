@@ -52,21 +52,6 @@ namespace adventureGame
             Console.WriteLine($"Strength: {strength}");
 
             Restart();
-         
-           
-
-            //Console.WriteLine("Do you want to quit or restart (quit/restart)");
-            //playerChoice = Console.ReadLine().ToLower();
-
-
-            //if (playerChoice == "restart")
-            //{
-            //    Restart();
-            //}
-            //else
-            //{
-            //    EndGame = true;
-            //}
              void Restart()
             {
                 while (isRunning == true)
@@ -86,8 +71,6 @@ namespace adventureGame
                         if (playerChoice == "take")
                         {
                             //Console.WriteLine("you need to fight me for it");
-
-
                             if (isMagicUser == true)
                             {
                                 Console.WriteLine("you grab the staff and shoot a bolt at the tree. The wizard congratulates you!");
