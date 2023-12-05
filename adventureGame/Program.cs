@@ -24,17 +24,13 @@ namespace adventureGame
             Random random = new Random();
 
             Console.WriteLine("Character sheet creator");
-
-            Console.Write("Enter character name: ");
+            Console.Write("Enter character name: ");//name
             string characterName = Console.ReadLine();
-
-            Console.Write("Enter character Age: ");
+            Console.Write("Enter character Age: "); //age
             int age = int.Parse(Console.ReadLine());
-
-            Console.Write("Enter character height: ");
+            Console.Write("Enter character height: ");//height
             float height = float.Parse(Console.ReadLine());
-
-            Console.Write("Is your character  a magic user? (yes/no):  ");
+            Console.Write("Is your character  a magic user? (yes/no):  ");//ismagic
             bool isMagicUser = Console.ReadLine().ToLower() == "yes";
 
             int charisma = random.Next(0, 20) + 1;
