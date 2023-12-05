@@ -14,13 +14,13 @@ namespace adventureGame
             bool hasStaff = false;
             bool goShop = false;
             bool inBattle = true;
+            bool hasShield = true;
+
             int HP = 100;
             int Stamina = 5;
             int EnemyHP = 50;
             int HpPotions = 5;
-
-            List<String> Inventory;
-            Inventory = new List<string>();
+            string[] inventory = { "Sword", "Shield", "Potion" };
 
             string playerChoice = "";
 
@@ -33,10 +33,13 @@ namespace adventureGame
             Console.WriteLine("Character sheet creator");
             Console.Write("Enter character name: ");//name
             string characterName = Console.ReadLine();
+
             Console.Write("Enter character Age: "); //age
             int age = int.Parse(Console.ReadLine());
+
             Console.Write("Enter character height: ");//height
             float height = float.Parse(Console.ReadLine());
+
             Console.Write("Is your character  a magic user? (yes/no):  ");//ismagic
             bool isMagicUser = Console.ReadLine().ToLower() == "yes";
 
@@ -51,7 +54,7 @@ namespace adventureGame
             Console.WriteLine($"Magic user: {isMagicUser}");
             Console.WriteLine($"Charisma: {charisma}");
             Console.WriteLine($"Strength: {strength}");
-            Console.WriteLine(" Equiptment: ");
+            Console.WriteLine(" Inventory: ");
             Console.WriteLine($"Wooden Sword, small shield, {HpPotions} health potions");
 
             Restart();
@@ -115,7 +118,7 @@ namespace adventureGame
                         Console.WriteLine($"Your Stamina is {Stamina}");
                         Console.WriteLine($"The Enemies health is {EnemyHP}");
                         Console.WriteLine("What will you do?");
-                        Console.WriteLine("Attack, Magic, Defend, Run");
+                        Console.WriteLine("Attack, inventory, Defend, Run");
                         playerChoice = Console.ReadLine().ToLower();
                         if (playerChoice == "attack")
                         {
@@ -130,7 +133,21 @@ namespace adventureGame
                         }
                         if (playerChoice == "Defend")
                         {
-
+                            if (hasShield == true)
+                            {
+                                Console.WriteLine("You raise up your shield ready for an attack. The enemy does no damage");
+                            }
+                            else
+                            {
+                                Console.WriteLine("You dont have a shield. The enemy atacks. Your health is " + HP);
+                            }
+                        }
+                        if (playerChoice == "inventory")
+                        {
+                            foreach (string item in inventory)
+                            {
+                                Console.WriteLine($"You have a: {item}");
+                            }
                         }
                     }
                 }
