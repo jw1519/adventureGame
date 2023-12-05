@@ -6,15 +6,18 @@ namespace adventureGame
 {
     internal class Program
     {
-        
+
 
         static void Main(string[] args)
         {
             bool isRunning = true;
             bool hasStaff = false;
             bool goShop = false;
-            
-            
+            bool inBattle = false;
+            int HP = 100;
+            int Stamina = 5;
+            int EnemyHP = 50;
+
             string playerChoice = "";
 
             Console.WriteLine("welcome to the adveture game");
@@ -46,7 +49,7 @@ namespace adventureGame
             Console.WriteLine($"Strength: {strength}");
 
             Restart();
-             void Restart()
+            void Restart()
             {
                 while (isRunning == true)
                 {
@@ -67,6 +70,8 @@ namespace adventureGame
                             if (isMagicUser == true)
                             {
                                 Console.WriteLine("you grab the staff and shoot a bolt at the tree. The wizard congratulates you!");
+                                Console.WriteLine("Time to test your power as enemys approach");
+                                inBattle = true;
                             }
                             else
                             {
@@ -98,19 +103,33 @@ namespace adventureGame
                         Console.WriteLine("potions, weapons, shields");
                     }
 
-                    //Restart or quit the game
-                    Console.WriteLine("Do you want to quit or restart (quit/restart)");
-                    playerChoice = Console.ReadLine().ToLower();
-                    if (playerChoice == "restart")
+                    if (inBattle == true)
                     {
-                        Restart();
-                    }
-                    else
-                    {
-                        isRunning = false;
+                        Console.WriteLine($"Your health is {HP}");
+                        Console.WriteLine($"Your Stamina is {Stamina}");
+                        Console.WriteLine($"The Enemies health is {EnemyHP}");
+                        Console.WriteLine("Wat will you do?");
+                        Console.WriteLine("Attack, Magic, Defend, Run");
+                        playerChoice = Console.ReadLine().ToLower();
+                        if (playerChoice == "attack")
+                        {
+                            Console.WriteLine("Enemys Health is " + EnemyHP);
+                        }
                     }
                 }
+
+                //Restart or quit the game
+                Console.WriteLine("Do you want to quit or restart (quit/restart)");
+                playerChoice = Console.ReadLine().ToLower();
+                if (playerChoice == "restart")
+                {
+                    Restart();
+                }
+                else
+                {
+                    isRunning = false;
+                }
             }
-        } 
+        }
     }
 }
