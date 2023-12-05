@@ -65,7 +65,7 @@ namespace adventureGame
 
                     if (playerChoice == "take")
                     {
-                        Console.WriteLine("you need to fight me for it");
+                        //Console.WriteLine("you need to fight me for it");
 
 
                         if (isMagicUser == true)
