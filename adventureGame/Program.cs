@@ -162,7 +162,6 @@ namespace adventureGame
                                 Console.WriteLine("Your stamina is 0. You miss the enemy. ");
                                 HP = HP - 10;
                             }
-                            
                         }
                         if (playerChoice == "run")
                         {
