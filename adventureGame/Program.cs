@@ -13,10 +13,11 @@ namespace adventureGame
             bool isRunning = true;
             bool hasStaff = false;
             bool goShop = false;
-            bool inBattle = false;
+            bool inBattle = true;
             int HP = 100;
             int Stamina = 5;
             int EnemyHP = 50;
+            int HpPotions = 5;
 
             string playerChoice = "";
 
@@ -47,6 +48,8 @@ namespace adventureGame
             Console.WriteLine($"Magic user: {isMagicUser}");
             Console.WriteLine($"Charisma: {charisma}");
             Console.WriteLine($"Strength: {strength}");
+            Console.WriteLine(" Equiptment: ");
+            Console.WriteLine($"Wooden Sword, small shield, {HpPotions} health potions");
 
             Restart();
             void Restart()
@@ -108,12 +111,23 @@ namespace adventureGame
                         Console.WriteLine($"Your health is {HP}");
                         Console.WriteLine($"Your Stamina is {Stamina}");
                         Console.WriteLine($"The Enemies health is {EnemyHP}");
-                        Console.WriteLine("Wat will you do?");
+                        Console.WriteLine("What will you do?");
                         Console.WriteLine("Attack, Magic, Defend, Run");
                         playerChoice = Console.ReadLine().ToLower();
                         if (playerChoice == "attack")
                         {
+                            EnemyHP = EnemyHP - strength;
                             Console.WriteLine("Enemys Health is " + EnemyHP);
+                            Stamina--;
+                        }
+                        if (playerChoice == "Run")
+                        {
+                            Console.WriteLine("The Enemy runs after you loose stamina");
+                            Stamina = 1;
+                        }
+                        if (playerChoice == "Defend")
+                        {
+
                         }
                     }
                 }
