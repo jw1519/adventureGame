@@ -13,8 +13,6 @@ namespace adventureGame
             bool isRunning = true;
             bool hasStaff = false;
             bool goShop = false;
-
-            bool EndGame = false;
             
             
             string playerChoice = "";
@@ -70,7 +68,6 @@ namespace adventureGame
 
                         if (playerChoice == "take")
                         {
-                            //Console.WriteLine("you need to fight me for it");
                             if (isMagicUser == true)
                             {
                                 Console.WriteLine("you grab the staff and shoot a bolt at the tree. The wizard congratulates you!");
@@ -105,10 +102,9 @@ namespace adventureGame
                         Console.WriteLine("potions, weapons, shields");
                     }
 
+                    //Restart or quit the game
                     Console.WriteLine("Do you want to quit or restart (quit/restart)");
                     playerChoice = Console.ReadLine().ToLower();
-
-
                     if (playerChoice == "restart")
                     {
                         Restart();
