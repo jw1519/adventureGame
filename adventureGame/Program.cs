@@ -152,8 +152,17 @@ namespace adventureGame
                         playerChoice = Console.ReadLine().ToLower();
                         if (playerChoice == "attack")
                         {
-                            EnemyHP = EnemyHP - strength;
-                            Console.WriteLine("Enemys Health is " + EnemyHP);
+                            if (Stamina >0)
+                            {
+                                EnemyHP = EnemyHP - strength;
+                                Console.WriteLine("Enemys Health is " + EnemyHP);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your stamina is 0. You miss the enemy. ");
+                                HP = HP - 10;
+                            }
+                            
                         }
                         if (playerChoice == "run")
                         {
