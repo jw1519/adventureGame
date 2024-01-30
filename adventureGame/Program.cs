@@ -42,7 +42,7 @@ namespace adventureGame
             Console.Write("Enter character height: ");//height
             float height = float.Parse(Console.ReadLine());
 
-            Console.Write("Is your character  a magic user? (yes/no):  ");//ismagic
+            Console.Write("Is your character  a magic user? (yes/no): ");//ismagic
             bool isMagicUser = Console.ReadLine().ToLower() == "yes";
 
             int charisma = random.Next(0, 20) + 1;
