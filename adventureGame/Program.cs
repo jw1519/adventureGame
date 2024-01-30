@@ -214,8 +214,9 @@ namespace adventureGame
                             isRunning = false;
                             inBattle = false;
                             Gold = Gold - 10;
+                            GameOver();
                         }
-                        GameOver();
+                        
                     }
                 }    
             }
