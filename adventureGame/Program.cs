@@ -174,6 +174,7 @@ namespace adventureGame
                             {
                                 Console.WriteLine("You raise up your shield ready for an attack. The enemy does no damage");
                                 ShieldHP--;
+                                Stamina++;
                             }
                             else
                             {
@@ -213,8 +214,8 @@ namespace adventureGame
                             isRunning = false;
                             inBattle = false;
                             Gold = Gold - 10;
-                            GameOver();
                         }
+                        GameOver();
                     }
                 }    
             }
