@@ -6,10 +6,18 @@ namespace adventureGame
 {
     internal class Program
     {
+        class Player
+        {
+            string playerName;
+            int playerAge;
+            float playerHeight;
+            bool playerIsMagicUser;
+        }
 
 
         static void Main(string[] args)
         {
+
             bool isRunning = true;
             bool hasStaff = false;
             bool goShop = false;
@@ -35,6 +43,7 @@ namespace adventureGame
             Console.WriteLine("Character sheet creator");
             Console.Write("Enter character name: ");//name
             string characterName = Console.ReadLine();
+            
 
             Console.Write("Enter character Age: "); //age
             int age = int.Parse(Console.ReadLine());
